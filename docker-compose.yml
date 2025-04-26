@@ -14,7 +14,7 @@ services:
     archivebox:
         image: archivebox/archivebox:latest
         ports:
-            - 8000:8000
+            - 8010:8000
         volumes:
             - ./data:/data
             # ./data/personas/Default/chrome_profile/Default:/data/personas/Default/chrome_profile/Default
@@ -23,8 +23,8 @@ services:
             # - ADMIN_PASSWORD=SomeSecretPassword
             - ALLOWED_HOSTS=*                   # set this to the hostname(s) you're going to serve the site from!
             - CSRF_TRUSTED_ORIGINS=http://localhost:8000  # you MUST set this to the server's URL for admin login and the REST API to work
-            - PUBLIC_INDEX=True                 # set to False to prevent anonymous users from viewing snapshot list
-            - PUBLIC_SNAPSHOTS=True             # set to False to prevent anonymous users from viewing snapshot content
+            - PUBLIC_INDEX=False                 # set to False to prevent anonymous users from viewing snapshot list
+            - PUBLIC_SNAPSHOTS=False             # set to False to prevent anonymous users from viewing snapshot content
             - PUBLIC_ADD_VIEW=False             # set to True to allow anonymous users to submit new URLs to archive
             - SEARCH_BACKEND_ENGINE=sonic       # tells ArchiveBox to use sonic container below for fast full-text search
             - SEARCH_BACKEND_HOST_NAME=sonic
